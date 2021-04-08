@@ -5,7 +5,7 @@ import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
+import { API_URL } from './config';
 function App() {
   const [tasks, setTasks] = useState([]);
   const AJAX = async function (url, uploadData = undefined, methodR = 'POST') {
@@ -43,7 +43,7 @@ function App() {
 
   useEffect(() => {
     const getData = async function () {
-      const data = await AJAX('http://localhost:5000/tasks');
+      const data = await AJAX(API_URL);
       setTasks(data);
     };
     getData();
@@ -51,17 +51,13 @@ function App() {
 
   const [showAddTask, setShowAddTask] = useState(false);
   const deleteTask = async (id) => {
-    AJAX(`http://localhost:5000/tasks/${id}`, id, 'DELETE');
+    AJAX(`${API_URL}${id}`, id, 'DELETE');
     setTasks(tasks.filter((task) => task.id !== id));
   };
   const toggleReminder = async (id) => {
-    const data = await AJAX(`http://localhost:5000/tasks/${id}`);
+    const data = await AJAX(`${API_URL}${id}`);
     const newData = { ...data, reminder: !data.reminder };
-    const dataBack = await AJAX(
-      `http://localhost:5000/tasks/${id}`,
-      newData,
-      'PUT'
-    );
+    const dataBack = await AJAX(`${API_URL}${id}`, newData, 'PUT');
     setTasks(
       tasks.map((task) =>
         task.id === dataBack.id
@@ -74,7 +70,7 @@ function App() {
     try {
       const id = Math.floor(Math.random() * 10000 + 1);
       const newTask = { id, ...task };
-      const data = await AJAX(`http://localhost:5000/tasks/`, newTask);
+      const data = await AJAX(`${API_URL}`, newTask);
       setTasks([...tasks, data]);
     } catch (err) {
       console.log(err);

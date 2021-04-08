@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Architecture
+
+![Architecture](https://github.com/nguyenthanhminh112000/BradTraversy-TaskTracer/blob/master/Architecture.png?raw=true)
+
+## Run into development
+
+I fake API by using JSON-Server. So Install and set up as your own JSON-Server. You can config server in config.js
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -68,5 +76,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-![Architecture](https://github.com/nguyenthanhminh112000/BradTraversy-TaskTracer/blob/master/Architecture.png?raw=true)
