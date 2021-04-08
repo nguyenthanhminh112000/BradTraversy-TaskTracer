@@ -43,8 +43,13 @@ function App() {
 
   useEffect(() => {
     const getData = async function () {
-      const data = await AJAX(API_URL);
-      setTasks(data);
+      try {
+        const data = await AJAX(API_URL);
+        setTasks(data);
+      } catch (error) {
+        setTasks([]);
+        alert('Please create your JSON-Server to use this Application');
+      }
     };
     getData();
   }, []);
